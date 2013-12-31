@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | Hiro Kawasaki]]></title>
+  <link href="http://kawahiro311.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://kawahiro311.github.io/"/>
+  <updated>2013-12-31T17:10:22+09:00</updated>
+  <id>http://kawahiro311.github.io/</id>
+  <author>
+    <name><![CDATA[Hiro Kawasaki]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Railsで連動プルダウン]]></title>
+    <link href="http://kawahiro311.github.io/blog/2013/10/26/rails-interlock-pulldown/"/>
+    <updated>2013-10-26T17:05:21+09:00</updated>
+    <id>http://kawahiro311.github.io/blog/2013/10/26/rails-interlock-pulldown</id>
+    <content type="html"><![CDATA[<p>都道府県を選んだら市区町村が絞り込まれるとかよくあるやつ。</p>
+
+<p>今回は会社登録時に都道府県と市区町村をプルダウンで選べるみたいな設定で考える。</p>
+
+<p>都道府県、市区町村、会社のモデルとそれぞれのリレーションはこんな感じ。</p>
+
+<p>```ruby</p>
+
+<h1>ms_pref.rb</h1>
+
+<p>class MsPref &lt; ActiveRecord::Base
+  has_many :ms_cities
+end</p>
+
+<h1>ms_city.rb</h1>
+
+<p>class MsCity &lt; ActiveRecord::Base
+  belongs_to :ms_pref
+end</p>
+
+<h1>company.rb</h1>
+
+<p>class Company &lt; ActiveRecord::Base
+  belongs_to :ms_pref
+  belongs_to :ms_city
+end
+```</p>
+
+<p>まずはviewで市区町村のプルダウンをpartial化する。</p>
+
+<p>```ruby</p>
+
+<h1>_form.html.slim</h1>
+
+<p>= form_for @company do |f|</p>
+
+<p>   (省略&hellip;)</p>
+
+<p>  .field</p>
+
+<pre><code>= f.label :ms_pref
+= f.collection_select :ms_pref, MsPref.all, :id, :name
+</code></pre>
+
+<p>  .field</p>
+
+<pre><code>= f.label :ms_city
+#cities_select
+  = render partial: 'cities', locals: {ms_pref_id: MsPref.first.id}
+</code></pre>
+
+<p>   (省略&hellip;)</p>
+
+<h1>_cities.html.slim</h1>
+
+<p>= collection_select :company, :ms_city, MsCity.where(ms_pref_id: ms_pref_id), :id, :name
+```</p>
+
+<p>都道府県の変更を検知するためのjquery(coffeescript)を書く。</p>
+
+<p>```</p>
+
+<h1>companies.js.coffee</h1>
+
+<p>$(document).on &lsquo;change&rsquo;, &lsquo;#company_ms_pref&rsquo;, &ndash;>
+  $.ajax(</p>
+
+<pre><code>type: 'GET'
+url: '/companies/cities_select'
+data: {
+  ms_pref_id: $(this).val()
+}
+</code></pre>
+
+<p>  ).done (data) &ndash;></p>
+
+<pre><code>$('#cities_select').html(data)
+</code></pre>
+
+<p>```</p>
+
+<p>あとは、ajaxでの値うけとり先のroutesの設定とcontrollerでそのメソッド定義して処理すれば完成！
+```ruby</p>
+
+<h1>routes.rb</h1>
+
+<p>resources :companies do
+  collection do</p>
+
+<pre><code>get :cities_select
+</code></pre>
+
+<p>  end
+end</p>
+
+<h1>companies_controller.rb</h1>
+
+<p>def cities_select
+  if request.xhr?</p>
+
+<pre><code>render partial: 'cities', locals: {ms_pref_id: params[:ms_pref_id]}
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Rails楽しいー♡</p>
+]]></content>
+  </entry>
+  
+</feed>
