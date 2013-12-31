@@ -1,6 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://kawahiro311.github.io/blog/2011/01/04/look-back-2011-n-2012/</loc>
+        <lastmod>2013-12-31T17:24:56+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://kawahiro311.github.io/blog/2013/10/26/rails-interlock-pulldown/</loc>
         <lastmod>2013-12-31T17:10:06+09:00</lastmod>
     </url>
@@ -10,11 +14,11 @@
     </url>
     <url>
         <loc>http://kawahiro311.github.io/blog/archives/</loc>
-        <lastmod>2013-12-31T17:10:06+09:00</lastmod>
+        <lastmod>2013-12-31T17:24:56+09:00</lastmod>
     </url>
     <url>
         <loc>http://kawahiro311.github.io/</loc>
-        <lastmod>2013-12-31T17:10:06+09:00</lastmod>
+        <lastmod>2013-12-31T17:24:56+09:00</lastmod>
     </url>
     <url>
         <loc>http://kawahiro311.github.io/robots.txt</loc>
