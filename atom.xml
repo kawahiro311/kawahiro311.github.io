@@ -4,7 +4,7 @@
   <title><![CDATA[Hiro Kawasaki]]></title>
   <link href="http://kawahiro311.github.io/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-01-01T15:04:27+09:00</updated>
+  <updated>2014-01-01T16:35:28+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
@@ -12,6 +12,50 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた]]></title>
+    <link href="http://kawahiro311.github.io/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io/"/>
+    <updated>2013-11-02T15:08:23+09:00</updated>
+    <id>http://kawahiro311.github.io/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io</id>
+    <content type="html"><![CDATA[<p>最近開発時のコミュニケーションツールとして、社内の何人かで試しに<a href="https://idobata.io/">idobata.io</a>を使っていて
+Emacsのルームができたので、はてブのEmacsエントリーを自動で通知させるスクリプトを書いてみた。</p>
+
+<p>idobata.ioはルームごとにWebhookのURLを提供してくれているので、そのURLにPOSTでデータを送信すれば通知できる。</p>
+
+<p>ということで以下、はてブのRSSよりデータを取得して、昨日あがったエントリーを<code>curl</code>コマンドでPOST送信するスクリプト。
+後はこれを一日一回cronで回してる。</p>
+
+<p>かんたん(｀・ω・´)</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;rss&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">rss</span> <span class="o">=</span> <span class="ss">RSS</span><span class="p">:</span><span class="ss">:Parser</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;http://b.hatena.ne.jp/t/emacs?mode=rss&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">today</span> <span class="o">=</span> <span class="no">Date</span><span class="o">.</span><span class="n">today</span>
+</span><span class='line'><span class="n">bookmarks</span> <span class="o">=</span> <span class="n">rss</span><span class="o">.</span><span class="n">items</span><span class="o">.</span><span class="n">select</span> <span class="k">do</span> <span class="o">|</span><span class="n">item</span><span class="o">|</span>
+</span><span class='line'>  <span class="p">(</span><span class="n">today</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">===</span> <span class="no">Date</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">dc_date</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">dc_date</span><span class="o">.</span><span class="n">month</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">dc_date</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">bookmarks</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">bookmark</span><span class="o">|</span>
+</span><span class='line'>  <span class="sb">`curl --data-urlencode &quot;source=&lt;span class=&#39;label label-info&#39;&gt;B!&lt;/span&gt; </span><span class="si">#{</span><span class="n">bookmark</span><span class="o">.</span><span class="n">title</span><span class="si">}</span><span class="sb"> &lt;br /&gt; </span><span class="si">#{</span><span class="n">bookmark</span><span class="o">.</span><span class="n">link</span><span class="si">}</span><span class="sb">&quot; -d format=html https://idobata.io/hook/webhookのurl`</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[OS X Mavericksでcommand line toolsインストール]]></title>
