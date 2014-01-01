@@ -5,17 +5,22 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OS X Mavericksでcommand line toolsインストール - Hiro Kawasaki</title>
+  <title>nodebrewでnode.jsをインストール - Hiro Kawasaki</title>
   <meta name="author" content="Hiro Kawasaki">
 
   
-  <meta name="description" content="Mavericksにしてからbrew doctorでcommand line toolsがないよっというwarningがでるようになった。 1
+  <meta name="description" content="node.jsのバージョン管理システム
+https://github.com/hokaccha/nodebrew インストール(github 公式documentより) 1
 2
 3
 4
-kawahiro@mac ~$ brew doctor
-Warning: No developer tools installed.
-You &hellip;">
+5
+6
+7
+8
+9
+$ curl -L git.io/nodebrew | perl - setup
+... &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +29,7 @@ You &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kawahiro311.github.io/blog/2013/10/28/install-command-line-tools-on-marvericks">
+  <link rel="canonical" href="http://kawahiro311.github.io/blog/2013/11/29/install-node-dot-js-by-nodebrew">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Hiro Kawasaki" type="application/atom+xml">
@@ -58,7 +63,7 @@ You &hellip;">
   
   <header>
     
-      <h1 class="entry-title">OS X Mavericksでcommand Line Toolsインストール</h1>
+      <h1 class="entry-title">nodebrewでnode.jsをインストール</h1>
     
     
       <p class="meta">
@@ -74,43 +79,76 @@ You &hellip;">
   
 
 
-<time datetime="2013-10-28T14:44:47+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
+<time datetime="2013-11-29T16:39:07+09:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Mavericksにしてから<code>brew doctor</code>でcommand line toolsがないよっというwarningがでるようになった。</p>
+<div class="entry-content"><p>node.jsのバージョン管理システム<br/>
+<a href="https://github.com/hokaccha/nodebrew">https://github.com/hokaccha/nodebrew</a></p>
+
+<h4>インストール(github 公式documentより)</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kawahiro@mac ~$ brew doctor
-</span><span class='line'>Warning: No developer tools installed.
-</span><span class='line'>You should install the Command Line Tools.
-</span><span class='line'>Run `xcode-select --install` to install them.</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -L git.io/nodebrew | perl - setup
+</span><span class='line'>...
+</span><span class='line'>install nodebrew in $HOME/.nodebrew
+</span><span class='line'>
+</span><span class='line'>========================================
+</span><span class='line'>Add path:
+</span><span class='line'>
+</span><span class='line'>export PATH=$HOME/.nodebrew/current/bin:$PATH
+</span><span class='line'>========================================</span></code></pre></td></tr></table></div></figure>
 
 
-<p>言われた通り、<code>xcode-select --install</code>を打つ。</p>
+<p>~/.zshrcに追加</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kawahiro@mac ~$ xcode-select --install</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export PATH=$HOME/.nodebrew/current/bin:$PATH</span></code></pre></td></tr></table></div></figure>
 
 
-<p>以下の画面が立ち上がって、インストールボタンをクリックすると</p>
 
-<p><img src="/assets/20131028141328.png" alt="helpful screenshot" /></p>
-
-<p>数分後インストール完了！</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kawahiro@mac ~$ brew doctor
-</span><span class='line'>Your system is ready to brew.</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ source ~/.zshrc
+</span><span class='line'>$ nodebrew help</span></code></pre></td></tr></table></div></figure>
 
 
+<p><a href="http://nodejs.org/">http://nodejs.org/</a> とかから最新のversion調べて、インストール</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nodebrew install v0.10.22</span></code></pre></td></tr></table></div></figure>
+
+
+<p>確認、インストールしたものを使用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nodebrew ls
+</span><span class='line'>$ nodebrew use v0.10.22
+</span><span class='line'>$ node -v
+</span><span class='line'>v0.10.22</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://qiita.com/sinmetal/items/154e81823f386279b33c">http://qiita.com/sinmetal/items/154e81823f386279b33c</a></li>
+<li><a href="http://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x">http://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x</a> (nodebrew以外でインストールした場合のuninstall方法)</li>
+</ul>
 
 </div>
 
@@ -134,12 +172,12 @@ You &hellip;">
   
 
 
-<time datetime="2013-10-28T14:44:47+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
+<time datetime="2013-11-29T16:39:07+09:00" pubdate data-updated="true">Nov 29<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/mac/'>mac</a>
+    <a class='category' href='/blog/categories/node-dot-js/'>node.js</a>
   
 </span>
 
@@ -148,7 +186,7 @@ You &hellip;">
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kawahiro311.github.io/blog/2013/10/28/install-command-line-tools-on-marvericks/" data-via="" data-counturl="http://kawahiro311.github.io/blog/2013/10/28/install-command-line-tools-on-marvericks/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kawahiro311.github.io/blog/2013/11/29/install-node-dot-js-by-nodebrew/" data-via="" data-counturl="http://kawahiro311.github.io/blog/2013/11/29/install-node-dot-js-by-nodebrew/" >Tweet</a>
   
   
   
@@ -157,10 +195,8 @@ You &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/10/26/rails-interlock-pulldown/" title="Previous Post: Railsで連動プルダウン">&laquo; Railsで連動プルダウン</a>
+        <a class="basic-alignment left" href="/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io/" title="Previous Post: idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた">&laquo; idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io/" title="Next Post: idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた">idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた &raquo;</a>
       
     </p>
   </footer>

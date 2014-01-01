@@ -4,7 +4,7 @@
   <title><![CDATA[Hiro Kawasaki]]></title>
   <link href="http://kawahiro311.github.io/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-01-01T16:35:28+09:00</updated>
+  <updated>2014-01-01T16:43:02+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[nodebrewでnode.jsをインストール]]></title>
+    <link href="http://kawahiro311.github.io/blog/2013/11/29/install-node-dot-js-by-nodebrew/"/>
+    <updated>2013-11-29T16:39:07+09:00</updated>
+    <id>http://kawahiro311.github.io/blog/2013/11/29/install-node-dot-js-by-nodebrew</id>
+    <content type="html"><![CDATA[<p>node.jsのバージョン管理システム<br/>
+<a href="https://github.com/hokaccha/nodebrew">https://github.com/hokaccha/nodebrew</a></p>
+
+<h4>インストール(github 公式documentより)</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ curl -L git.io/nodebrew | perl - setup
+</span><span class='line'>...
+</span><span class='line'>install nodebrew in $HOME/.nodebrew
+</span><span class='line'>
+</span><span class='line'>========================================
+</span><span class='line'>Add path:
+</span><span class='line'>
+</span><span class='line'>export PATH=$HOME/.nodebrew/current/bin:$PATH
+</span><span class='line'>========================================</span></code></pre></td></tr></table></div></figure>
+
+
+<p>~/.zshrcに追加</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>export PATH=$HOME/.nodebrew/current/bin:$PATH</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ source ~/.zshrc
+</span><span class='line'>$ nodebrew help</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://nodejs.org/">http://nodejs.org/</a> とかから最新のversion調べて、インストール</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nodebrew install v0.10.22</span></code></pre></td></tr></table></div></figure>
+
+
+<p>確認、インストールしたものを使用</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ nodebrew ls
+</span><span class='line'>$ nodebrew use v0.10.22
+</span><span class='line'>$ node -v
+</span><span class='line'>v0.10.22</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>参考</h4>
+
+<ul>
+<li><a href="http://qiita.com/sinmetal/items/154e81823f386279b33c">http://qiita.com/sinmetal/items/154e81823f386279b33c</a></li>
+<li><a href="http://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x">http://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x</a> (nodebrew以外でインストールした場合のuninstall方法)</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた]]></title>
