@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Hiro Kawasaki]]></title>
+  <title><![CDATA[@kawahiro]]></title>
   <link href="http://kawahiro311.github.io/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-01-03T17:56:38+09:00</updated>
+  <updated>2014-01-03T18:24:04+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
