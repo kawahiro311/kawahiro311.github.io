@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ruby | Hiro Kawasaki]]></title>
-  <link href="http://kawahiro311.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <title><![CDATA[Category: sinatra | Hiro Kawasaki]]></title>
+  <link href="http://kawahiro311.github.io/blog/categories/sinatra/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
   <updated>2014-01-03T16:27:19+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
@@ -77,38 +77,6 @@ $ bundle exec ruby app.rb
 <li><a href="http://momota.github.io/blog/2013/09/16/sinatra/">Rails から外れた僕らは Sinatra で I Did It My Way (1)</a></li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた]]></title>
-    <link href="http://kawahiro311.github.io/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io/"/>
-    <updated>2013-11-02T15:08:23+09:00</updated>
-    <id>http://kawahiro311.github.io/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io</id>
-    <content type="html"><![CDATA[<p>最近開発時のコミュニケーションツールとして、社内の何人かで試しに<a href="https://idobata.io/">idobata.io</a>を使っていて
-Emacsのルームができたので、はてブのEmacsエントリーを自動で通知させるスクリプトを書いてみた。</p>
-
-<p>idobata.ioはルームごとにWebhookのURLを提供してくれているので、そのURLにPOSTでデータを送信すれば通知できる。</p>
-
-<p>ということで以下、はてブのRSSよりデータを取得して、昨日あがったエントリーを<code>curl</code>コマンドでPOST送信するスクリプト。
-後はこれを一日一回cronで回してる。</p>
-
-<p>かんたん(｀・ω・´)</p>
-
-<p>```ruby
-require &lsquo;rss&rsquo;</p>
-
-<p>rss = RSS::Parser.parse(&lsquo;<a href="http://b.hatena.ne.jp/t/emacs?mode=rss">http://b.hatena.ne.jp/t/emacs?mode=rss</a>&rsquo;)</p>
-
-<p>today = Date.today
-bookmarks = rss.items.select do |item|
-  (today &ndash; 1) === Date.new(item.dc_date.year, item.dc_date.month, item.dc_date.day)
-end</p>
-
-<p>bookmarks.each do |bookmark|
-  <code>curl --data-urlencode "source=&lt;span class='label label-info'&gt;B!&lt;/span&gt; #{bookmark.title} &lt;br /&gt; #{bookmark.link}" -d format=html https://idobata.io/hook/webhookのurl</code>
-end
-```</p>
 ]]></content>
   </entry>
   

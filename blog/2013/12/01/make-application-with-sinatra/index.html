@@ -5,17 +5,20 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OS X Mavericksでcommand line toolsインストール - Hiro Kawasaki</title>
+  <title>Sinatraでアプリ構築 - Hiro Kawasaki</title>
   <meta name="author" content="Hiro Kawasaki">
 
   
-  <meta name="description" content="Mavericksにしてからbrew doctorでcommand line toolsがないよっというwarningがでるようになった。 1
+  <meta name="description" content="http://www.sinatrarb.com/intro-jp.html アプリ構築 プロジェクト作成 1
+2
+3
+$ mkdir hello-sinatra
+$ cd hello-sinatra
+$ bundle init Gemfile 1
 2
 3
 4
-kawahiro@mac ~$ brew doctor
-Warning: No developer tools installed.
-You &hellip;">
+# A sample Gemfile &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +27,7 @@ You &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://kawahiro311.github.io/blog/2013/10/28/install-command-line-tools-on-marvericks">
+  <link rel="canonical" href="http://kawahiro311.github.io/blog/2013/12/01/make-application-with-sinatra">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Hiro Kawasaki" type="application/atom+xml">
@@ -58,7 +61,7 @@ You &hellip;">
   
   <header>
     
-      <h1 class="entry-title">OS X Mavericksでcommand Line Toolsインストール</h1>
+      <h1 class="entry-title">Sinatraでアプリ構築</h1>
     
     
       <p class="meta">
@@ -74,43 +77,78 @@ You &hellip;">
   
 
 
-<time datetime="2013-10-28T14:44:47+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
+<time datetime="2013-12-01T16:25:08+09:00" pubdate data-updated="true">Dec 1<span>st</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Mavericksにしてから<code>brew doctor</code>でcommand line toolsがないよっというwarningがでるようになった。</p>
+<div class="entry-content"><p><a href="http://www.sinatrarb.com/intro-jp.html">http://www.sinatrarb.com/intro-jp.html</a></p>
+
+<h3>アプリ構築</h3>
+
+<h4>プロジェクト作成</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir hello-sinatra
+</span><span class='line'>$ cd hello-sinatra
+</span><span class='line'>$ bundle init</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Gemfile</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kawahiro@mac ~$ brew doctor
-</span><span class='line'>Warning: No developer tools installed.
-</span><span class='line'>You should install the Command Line Tools.
-</span><span class='line'>Run `xcode-select --install` to install them.</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'># A sample Gemfile
+</span><span class='line'>source "https://rubygems.org"
+</span><span class='line'>
+</span><span class='line'>gem "sinatra"</span></code></pre></td></tr></table></div></figure>
 
 
-<p>言われた通り、<code>xcode-select --install</code>を打つ。</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kawahiro@mac ~$ xcode-select --install</span></code></pre></td></tr></table></div></figure>
-
-
-<p>以下の画面が立ち上がって、インストールボタンをクリックすると</p>
-
-<p><img src="/assets/20131028141328.png" alt="helpful screenshot" /></p>
-
-<p>数分後インストール完了！</p>
+<p>gemをインストール</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install --path=vendor/bundle</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ファイルを作成</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ touch app.rb</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>kawahiro@mac ~$ brew doctor
-</span><span class='line'>Your system is ready to brew.</span></code></pre></td></tr></table></div></figure>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
+</span><span class='line'><span class="n">get</span> <span class="s1">&#39;/&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="s1">&#39;Hello Sinatra!&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>サーバ起動</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">ruby</span> <span class="n">app</span><span class="o">.</span><span class="n">rb</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://qiita.com/hiroki_y/items/06f5780543bec988d8b7">【Ruby】Sinatraで、速攻でWebサイトを公開するための環境構築</a></li>
+<li><a href="http://qiita.com/foo9/items/2cd9047773e3d4c3bb79">はじめてのSinatra</a></li>
+<li><a href="http://momota.github.io/blog/2013/09/16/sinatra/">Rails から外れた僕らは Sinatra で I Did It My Way (1)</a></li>
+</ul>
 
 </div>
 
@@ -134,12 +172,12 @@ You &hellip;">
   
 
 
-<time datetime="2013-10-28T14:44:47+09:00" pubdate data-updated="true">Oct 28<span>th</span>, 2013</time>
+<time datetime="2013-12-01T16:25:08+09:00" pubdate data-updated="true">Dec 1<span>st</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/mac/'>mac</a>
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>, <a class='category' href='/blog/categories/sinatra/'>sinatra</a>
   
 </span>
 
@@ -148,7 +186,7 @@ You &hellip;">
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kawahiro311.github.io/blog/2013/10/28/install-command-line-tools-on-marvericks/" data-via="" data-counturl="http://kawahiro311.github.io/blog/2013/10/28/install-command-line-tools-on-marvericks/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://kawahiro311.github.io/blog/2013/12/01/make-application-with-sinatra/" data-via="" data-counturl="http://kawahiro311.github.io/blog/2013/12/01/make-application-with-sinatra/" >Tweet</a>
   
   
   
@@ -157,10 +195,8 @@ You &hellip;">
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/10/26/rails-interlock-pulldown/" title="Previous Post: Railsで連動プルダウン">&laquo; Railsで連動プルダウン</a>
+        <a class="basic-alignment left" href="/blog/2013/11/29/install-node-dot-js-by-nodebrew/" title="Previous Post: nodebrewでnode.jsをインストール">&laquo; nodebrewでnode.jsをインストール</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/02/post-hatebu-emacs-entry-to-idobata-dot-io/" title="Next Post: idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた">idobata.ioにはてブのエントリーを通知するRubyスクリプトを書いてみた &raquo;</a>
       
     </p>
   </footer>

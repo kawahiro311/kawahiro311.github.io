@@ -4,7 +4,7 @@
   <title><![CDATA[Hiro Kawasaki]]></title>
   <link href="http://kawahiro311.github.io/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-01-01T16:46:22+09:00</updated>
+  <updated>2014-01-03T16:27:19+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sinatraでアプリ構築]]></title>
+    <link href="http://kawahiro311.github.io/blog/2013/12/01/make-application-with-sinatra/"/>
+    <updated>2013-12-01T16:25:08+09:00</updated>
+    <id>http://kawahiro311.github.io/blog/2013/12/01/make-application-with-sinatra</id>
+    <content type="html"><![CDATA[<p><a href="http://www.sinatrarb.com/intro-jp.html">http://www.sinatrarb.com/intro-jp.html</a></p>
+
+<h3>アプリ構築</h3>
+
+<h4>プロジェクト作成</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ mkdir hello-sinatra
+</span><span class='line'>$ cd hello-sinatra
+</span><span class='line'>$ bundle init</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Gemfile</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'># A sample Gemfile
+</span><span class='line'>source "https://rubygems.org"
+</span><span class='line'>
+</span><span class='line'>gem "sinatra"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>gemをインストール</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ bundle install --path=vendor/bundle</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ファイルを作成</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ touch app.rb</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">require</span> <span class="s1">&#39;sinatra&#39;</span>
+</span><span class='line'><span class="n">get</span> <span class="s1">&#39;/&#39;</span> <span class="k">do</span>
+</span><span class='line'>    <span class="s1">&#39;Hello Sinatra!&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>サーバ起動</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="err">$</span> <span class="n">bundle</span> <span class="nb">exec</span> <span class="n">ruby</span> <span class="n">app</span><span class="o">.</span><span class="n">rb</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>参考</h3>
+
+<ul>
+<li><a href="http://qiita.com/hiroki_y/items/06f5780543bec988d8b7">【Ruby】Sinatraで、速攻でWebサイトを公開するための環境構築</a></li>
+<li><a href="http://qiita.com/foo9/items/2cd9047773e3d4c3bb79">はじめてのSinatra</a></li>
+<li><a href="http://momota.github.io/blog/2013/09/16/sinatra/">Rails から外れた僕らは Sinatra で I Did It My Way (1)</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[nodebrewでnode.jsをインストール]]></title>
