@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | @kawahiro311]]></title>
   <link href="http://kawahiro311.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-02-20T23:23:43+09:00</updated>
+  <updated>2014-02-20T23:32:21+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Railsで遷移元の情報を取得]]></title>
+    <title type="html"><![CDATA[Railsで遷移元のURLの取得]]></title>
     <link href="http://kawahiro311.github.io/blog/2014/02/20/rails-get-request-referrer-info/"/>
     <updated>2014-02-20T23:05:44+09:00</updated>
     <id>http://kawahiro311.github.io/blog/2014/02/20/rails-get-request-referrer-info</id>
