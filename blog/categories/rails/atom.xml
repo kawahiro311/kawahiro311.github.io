@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | @kawahiro311]]></title>
   <link href="http://kawahiro311.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-01-07T00:08:14+09:00</updated>
+  <updated>2014-02-20T23:23:43+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Railsで遷移元の情報を取得]]></title>
+    <link href="http://kawahiro311.github.io/blog/2014/02/20/rails-get-request-referrer-info/"/>
+    <updated>2014-02-20T23:05:44+09:00</updated>
+    <id>http://kawahiro311.github.io/blog/2014/02/20/rails-get-request-referrer-info</id>
+    <content type="html"><![CDATA[<p>遷移元によって、処理を変えたいことがあったのでメモ。</p>
+
+<p>遷移元のURL取得</p>
+
+<p><code>ruby
+request.referer
+</code></p>
+
+<p>遷移元のcontroller名、action名は</p>
+
+<p><code>ruby
+Rails.application.routes.recognize_path(request.referrer)
+=&gt; {:controller =&gt; "hoge", :action =&gt; "index"}
+</code></p>
+
+<p>てな感じで取得できる☆</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Railsで連動プルダウン]]></title>

@@ -4,7 +4,7 @@
   <title><![CDATA[@kawahiro311]]></title>
   <link href="http://kawahiro311.github.io/atom.xml" rel="self"/>
   <link href="http://kawahiro311.github.io/"/>
-  <updated>2014-01-07T00:08:14+09:00</updated>
+  <updated>2014-02-20T23:23:43+09:00</updated>
   <id>http://kawahiro311.github.io/</id>
   <author>
     <name><![CDATA[Hiro Kawasaki]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Railsで遷移元の情報を取得]]></title>
+    <link href="http://kawahiro311.github.io/blog/2014/02/20/rails-get-request-referrer-info/"/>
+    <updated>2014-02-20T23:05:44+09:00</updated>
+    <id>http://kawahiro311.github.io/blog/2014/02/20/rails-get-request-referrer-info</id>
+    <content type="html"><![CDATA[<p>遷移元によって、処理を変えたいことがあったのでメモ。</p>
+
+<p>遷移元のURL取得</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">request</span><span class="o">.</span><span class="n">referer</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>遷移元のcontroller名、action名は</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Rails</span><span class="o">.</span><span class="n">application</span><span class="o">.</span><span class="n">routes</span><span class="o">.</span><span class="n">recognize_path</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">referrer</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:controller</span> <span class="o">=&gt;</span> <span class="s2">&quot;hoge&quot;</span><span class="p">,</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="s2">&quot;index&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>てな感じで取得できる☆</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VirtualBoxのネットワークの種類]]></title>
